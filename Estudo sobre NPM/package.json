@@ -1,0 +1,17 @@
+{
+  "name": "servidor_puro",
+  "version": "1.0.0",
+  "description": "Estudo sobre o NPM e o gerenciamento de pacotes",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon index.js"
+  },
+  "author": "Felipe",
+  "license": "ISC",
+  "dependencies": {
+    "random-words": "^1.1.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.9"
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "name": "servidorpuro",
+  "version": "1.0.0",
+  "description": "Estudo sobre a criação de um servidor Puro",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "author": "Felipe",
+  "license": "ISC"
+}

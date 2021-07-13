@@ -1,0 +1,18 @@
+{
+  "name": "serverexpress",
+  "version": "1.0.0",
+  "description": "Criação de um servidor com express e implementação de middleware, gerenciamento de postagens e banco de dados",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon --exec node index.js"
+  },
+  "author": "Felipe Carvalho",
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^2.0.9"
+  },
+  "dependencies": {
+    "express": "^4.17.1",
+    "uuid": "^8.3.2"
+  }
+}
