@@ -1,0 +1,29 @@
+GET http://localhost:8080/
+
+###
+
+GET http://localhost:8080/posts
+
+###
+
+POST http://localhost:8080/posts
+Content-Type: application/json
+
+{
+    "titulo": "Meu primeiro título",
+    "texto": "Meu primeiro Post."
+}
+
+###
+
+PUT http://localhost:8080/posts?id=1
+Content-Type: application/json
+
+{
+   "titulo": "Meu primeiro título",
+    "texto": "Meu primeiro texto."
+}
+
+###
+
+DELETE http://localhost:8080/usuarios?id=1261b8e9-b145-4127-a164-2f6bcb2de88f
