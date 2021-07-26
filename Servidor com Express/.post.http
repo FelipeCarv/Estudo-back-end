@@ -2,21 +2,22 @@ GET http://localhost:8080/
 
 ###
 
-GET http://localhost:8080/posts
+GET http://localhost:8080/api/posts/
 
 ###
 
-POST http://localhost:8080/posts
+POST http://localhost:8080/api/posts
 Content-Type: application/json
 
 {
-    "titulo": "Meu primeiro título",
-    "texto": "Meu primeiro Post."
+    "titulo": "Motivação no Estudo de programação",
+    "texto": "Postagem sobre Front-end.",
+    "userId": 3
 }
 
 ###
 
-PUT http://localhost:8080/posts?id=1
+PUT http://localhost:8080/api/posts?id=1
 Content-Type: application/json
 
 {

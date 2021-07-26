@@ -2,21 +2,31 @@ GET http://localhost:8080/
 
 ###
 
-GET http://localhost:8080/usuarios
+GET http://localhost:8080/api/usuarios
 
 ###
 
-POST http://localhost:8080/usuarios
+POST http://localhost:8080/api/usuarios
 Content-Type: application/json
 
 {
-    "email": "maria@email.com",
-    "senha": "123maria456"
+    "email": "Iago@email.com",
+    "senha": "hiagomais20"
 }
 
 ###
 
-PUT http://localhost:8080/usuarios?id=1
+POST http://localhost:8080/api/usuarios/login
+Content-Type: application/json
+
+{
+    "email": "felipe@email.com",
+    "senha": "felipe2020"
+}
+
+###
+
+PUT http://localhost:8080/api/usuarios?id=1
 Content-Type: application/json
 
 {
@@ -26,4 +36,4 @@ Content-Type: application/json
 
 ###
 
-DELETE http://localhost:8080/usuarios?id=1261b8e9-b145-4127-a164-2f6bcb2de88f
+DELETE http://localhost:8080/api/usuarios?id=5

@@ -10,12 +10,14 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      // define association here
+      Post.belongsTo(models.Usuario, {foreignKey: 'userId'})//criando uma relação de pertencimento na tabela post.
     }
   };
   Post.init({
     titulo: DataTypes.STRING,
-    texto: DataTypes.STRING
+    texto: DataTypes.STRING,
+    userId: DataTypes.INTEGER,
+    foto: DataTypes.STRING
   }, {
     sequelize,
     modelName: 'Post',

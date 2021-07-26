@@ -3,6 +3,11 @@ const router = express.Router();//chamando o roteador do express.
 const { v4: uuidv4} = require('uuid');//fornece um ID.
 const usuarioMid = require('../middleware/validarUsuario.middleware');//recebendo o retorno da função middleware.
 const { Usuario } = require('../db/models');
+const bcrypt = require('bcrypt');
+const jwt = require("jsonwebtoken");
+require('dotenv').config
+
+
 
 
 router.post('/', usuarioMid);//em qualquer chamado do método post, será chamado a função middleware.
@@ -25,9 +30,39 @@ router.get('/:id', async (req, res) => {
   
 
 router.post('/', async (req, res)=>{
-        const usuario = await Usuario.create(req.body);//adicionando o usuário ao BD
+        const senha = req.body.senha;
+        const salt = await bcrypt.genSalt(10)
+        const senhaCriptografada = await bcrypt.hash(senha, salt);
+        const usuario = {email: req.body.email, senha: senhaCriptografada}
+
+        const usuarioObj = await Usuario.create(usuario);//adicionando o usuário ao BD
         res.json({msg: "usuario criado com sucesso!"}); 
 });
+
+router.post("/login", async (req, res) => {
+
+    const email = req.body.email;
+    const senha = req.body.senha;
+  
+    const usuario = await Usuario.findOne({
+      where: {
+        email: email,
+      },
+    });
+  
+    if (usuario && (await bcrypt.compare(senha, usuario.senha))) {
+      const payload = {
+        sub: usuario.id,
+        iss: "imd-backend",
+        aud: "imd-frontend",
+        email: usuario.email,
+      };
+      const token = jwt.sign(payload, process.env.ACCESS_TOKEN_SECRET)
+      res.json({ accessToken: token })
+    } else {
+      res.status(403).json({ msg: "usuário ou senha inválidos" })
+    }
+  });
 
 router.put('/', async (req, res)=>{
     const id = req.query.id;//recebendo a ID pela query da requisicao
