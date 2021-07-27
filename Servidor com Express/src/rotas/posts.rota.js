@@ -4,6 +4,8 @@ const postMid = require('../middleware/validarPost.middleware');
 const { Post, Usuario } = require('../db/models');//selecionando o "post" dos modelos criados no banco de dados.
 const path = require('path');
 var multer = require('multer');
+const autenticar = require('../middleware/autenticacao.mid')
+
 
 var storage = multer.diskStorage({
     destination: function (req, file, cb) {
@@ -27,9 +29,9 @@ const fileFilter = (req, file, cb) => {//filtrar os tipos de arquivos suportados
 
 var upload = multer({storage: storage, fileFilter: fileFilter});//passando pra função, um objeto contendo o caminho para salvar os uploads
 
-router.post('/', upload.single('foto'));
-router.post('/', postMid);
-router.put('/', postMid);
+router.post('/', autenticar, upload.single('foto'));
+router.post('/', autenticar, postMid);
+router.put('/', autenticar, postMid);
 
 
 router.get('/:id', async (req, res) => {
